@@ -32,7 +32,7 @@ public class SignIn extends AppCompatActivity {
         service = APIClient.getClient().create(IWSSBService.class);
 
         usernameVal = (EditText) findViewById(R.id.usernameVal);
-        passwordVal = (EditText) findViewById(R.id.usernameVal);
+        passwordVal = (EditText) findViewById(R.id.passwordVal);
         signinButton = (Button) findViewById(R.id.signinButton);
 
         signinButton.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class SignIn extends AppCompatActivity {
                     String pass = user.getPassword();
                     String username = user.getUsername();
                     String id = user.getId();
-                    Log.d("User",username+" "+passwordVal+" "+id);
+                    Log.d("User",username+" "+pass+" "+id);
 
                     //openApp(id);
                 }
@@ -93,7 +93,7 @@ public class SignIn extends AppCompatActivity {
         startActivity(intent);
     }**/
 
-    public void openRegister(View view) {
+    public void openRegisterView(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
