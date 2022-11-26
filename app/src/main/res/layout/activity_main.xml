@@ -23,17 +23,17 @@
         android:id="@+id/usernameTextField"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="36dp"
         android:ems="10"
         android:hint="username"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/emailTextField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/passwordVal"
+        android:id="@+id/passwordTextField"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginBottom="308dp"
@@ -49,17 +49,18 @@
         android:id="@+id/emailTextField"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="384dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="false"
-        app:layout_constraintBottom_toTopOf="@+id/passwordVal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/signinButton"
+        android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -68,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordVal"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextField"
         app:layout_constraintVertical_bias="0.0"
         android:onClick="attemptRegistration"/>
 

@@ -1,2 +1,13 @@
 # DSA_G4_Android
-Android APP, retrofit, store...
+
+## Android APP
+
+Using retrofit
+
+Persons in charge
+
+Registration: Frederick Andrade
+
+Login: Tatiana Tkachuk
+
+Store: Omar Fallouk

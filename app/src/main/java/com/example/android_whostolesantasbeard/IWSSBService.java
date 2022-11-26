@@ -9,4 +9,7 @@ import retrofit2.http.POST;
 public interface IWSSBService {
     @POST("/users/signUp")
     Call registerAccount(@Body UserCredentials credentials);
+
+    @POST("/users/Auth/Login")
+    Call<User> loginUser(@Body User user);
 }

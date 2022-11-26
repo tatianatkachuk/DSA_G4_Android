@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         retrofitSetUp();
         usernameTextField = (TextView) findViewById(R.id.usernameTextField);
         emailTextField = (TextView) findViewById(R.id.emailTextField);
-        passwordTextField = (TextView) findViewById(R.id.passwordVal);
-        registerButton = (Button) findViewById(R.id.signinButton);
+        passwordTextField = (TextView) findViewById(R.id.passwordTextField);
+        registerButton = (Button) findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

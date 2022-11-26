@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:background="#1A5A17"
-    tools:context=".MainActivity">
+    tools:context=".SignIn">
 
     <Button
         android:id="@+id/signinButton"
@@ -45,11 +45,13 @@
         android:fontFamily="sans-serif-black"
         android:text="Forgot Password?"
         android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="570dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.81"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/passwordVal"
@@ -71,28 +73,33 @@
         android:fontFamily="sans-serif-black"
         android:text="Password"
         android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="356dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textSignUp"
-        android:layout_width="140dp"
-        android:layout_height="28dp"
+        android:layout_width="61dp"
+        android:layout_height="24dp"
         android:fontFamily="sans-serif-black"
         android:text="Sign Up"
         android:textAlignment="textEnd"
         android:textColor="#F44336"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintHorizontal_bias="0.911"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="570dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.806"
+        android:onClick="openRegister"
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/usernameTextField"
+        android:id="@+id/usernameVal"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:ems="10"
@@ -112,17 +119,19 @@
         android:fontFamily="sans-serif-black"
         android:text="Username"
         android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="258dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36"
+        tools:ignore="MissingConstraints" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="115dp"
         android:layout_height="112dp"
-        android:src="@drawable/mainIcon"
+        android:src="@drawable/icongame"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
