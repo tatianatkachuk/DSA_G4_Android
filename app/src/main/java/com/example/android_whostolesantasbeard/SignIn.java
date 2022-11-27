@@ -67,7 +67,27 @@ public class SignIn extends AppCompatActivity {
                     String id = user.getId();
                     Log.d("User",username+" "+pass+" "+id);
 
-                    //openApp(id);
+                    openApp(id);
+                }
+                if(response.code()==404){
+                    Log.d("Error","User not found");
+                    Toast toast = Toast.makeText(getApplicationContext(),"This user doesn't exist! Please try again", Toast.LENGTH_LONG);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            toast.show();
+                        }
+                    });
+                }
+                if(response.code()==405){
+                    Log.d("Error","Wrong password");
+                    Toast toast = Toast.makeText(getApplicationContext(),"The password is wrong! Please try again", Toast.LENGTH_LONG);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            toast.show();
+                        }
+                    });
                 }
                 else{
                     Log.d("Error","Login failed");
@@ -91,12 +111,11 @@ public class SignIn extends AppCompatActivity {
         });
     }
 
-    /**
     public void openApp(String id) {
-        Intent intent = new Intent(this, MainApp.class);
+        Intent intent = new Intent(this, Main.class);
         intent.putExtra("id", id);
         startActivity(intent);
-    }**/
+    }
 
     public void openRegisterView(View view) {
         Intent intent = new Intent(SignIn.this, Register.class);

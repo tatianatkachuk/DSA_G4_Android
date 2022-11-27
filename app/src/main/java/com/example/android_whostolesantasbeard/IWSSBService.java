@@ -17,5 +17,5 @@ public interface IWSSBService {
     @POST("user/logIn")
     Call<User> loginUser(@Body User user);
 
-    @GET("user/logIn/store") Observable<List<Object>>();
+    //@GET("user/logIn/store") Observable<List<Object>>();
 }

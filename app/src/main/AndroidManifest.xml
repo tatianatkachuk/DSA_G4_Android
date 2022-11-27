@@ -33,6 +33,14 @@
             android:name=".Register" >
         </activity>
 
+        <activity
+            android:name=".Main" >
+        </activity>
+
+        <activity
+            android:name=".Object" >
+        </activity>
+
     </application>
 
 </manifest>
