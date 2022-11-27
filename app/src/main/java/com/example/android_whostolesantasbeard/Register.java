@@ -20,7 +20,7 @@ public class Register extends AppCompatActivity {
     TextView usernameTextField;
     TextView emailTextField;
     TextView passwordTextField;
-    Button goBackButton;
+    TextView goToSignInButton;
     Button registerButton;
     IWSSBService service;
 
@@ -68,7 +68,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         service = APIClient.getClient().create(IWSSBService.class);
-        goBackButton = (Button) findViewById(R.id.backToSignIn);
+        goToSignInButton = (TextView) findViewById(R.id.backToSignIn);
         usernameTextField = (TextView) findViewById(R.id.usernameTextField);
         emailTextField = (TextView) findViewById(R.id.emailTextField);
         passwordTextField = (TextView) findViewById(R.id.passwordTextField);
@@ -79,7 +79,7 @@ public class Register extends AppCompatActivity {
                 attemptRegistration();
             }
         });
-        goBackButton.setOnClickListener(new View.OnClickListener() {
+        goToSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Register.this, SignIn.class);
