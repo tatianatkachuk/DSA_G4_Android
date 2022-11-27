@@ -16,9 +16,4 @@ public interface IWSSBService {
 
     @POST("user/logIn")
     Call<User> loginUser(@Body User user);
-<<<<<<< Updated upstream
-
-    //@GET("user/logIn/store") Observable<List<Object>>();
-=======
->>>>>>> Stashed changes
 }

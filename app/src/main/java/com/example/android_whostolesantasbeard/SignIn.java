@@ -66,8 +66,8 @@ public class SignIn extends AppCompatActivity {
                     String username = user.getUsername();
                     String id = user.getId();
                     Log.d("User",username+" "+pass+" "+id);
-
                     openApp(id);
+                    return;
                 }
                 if(response.code()==404){
                     Log.d("Error","User not found");
@@ -78,6 +78,7 @@ public class SignIn extends AppCompatActivity {
                             toast.show();
                         }
                     });
+                    return;
                 }
                 if(response.code()==405){
                     Log.d("Error","Wrong password");

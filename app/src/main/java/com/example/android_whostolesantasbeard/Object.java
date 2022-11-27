@@ -1,5 +1,9 @@
 package com.example.android_whostolesantasbeard;
 
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 public class Object {
    private String id;
    private String description;
@@ -14,7 +18,6 @@ public class Object {
 
       this.id = id;
    }
-
    public void setPrice(int price) {
       this.price = price;
    }

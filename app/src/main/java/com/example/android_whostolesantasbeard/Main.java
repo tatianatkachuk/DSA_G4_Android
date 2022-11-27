@@ -21,7 +21,6 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     IWSSBService service;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +40,7 @@ public class Main extends AppCompatActivity{
     }
 
     public void openStoreView(View view) {
-        Intent intent = new Intent(Main.this, Object.class);
-        this.startActivity(intent);
+       /* Intent intent = new Intent(Main.this, Object.class);
+        this.startActivity(intent);*/
     }
 }
