@@ -20,10 +20,9 @@ public class SignIn extends AppCompatActivity {
 
     TextView usernameVal;
     TextView passwordVal;
-    Button signinButton;
+    Button signInButton;
+    TextView swapToRegisterButton;
     IWSSBService service;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +32,23 @@ public class SignIn extends AppCompatActivity {
 
         usernameVal = (EditText) findViewById(R.id.usernameVal);
         passwordVal = (EditText) findViewById(R.id.passwordVal);
-        signinButton = (Button) findViewById(R.id.signinButton);
-
-        signinButton.setOnClickListener(new View.OnClickListener() {
+        signInButton = (Button) findViewById(R.id.signinButton);
+        swapToRegisterButton = (TextView) findViewById(R.id.swapToRegisterButton);
+        signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loginToApp();
             }
         });
+        swapToRegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRegisterView(view);
+            }
+        });
+
 
     }
-
     public void loginToApp(){
         String username = usernameVal.getText().toString();
         String pass = passwordVal.getText().toString();
@@ -55,7 +60,7 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 Log.d("TAG",response.code()+"");
-                if(response.code()==201) {
+                if(response.code()==200) {
                     User user = response.body();
                     String pass = user.getPassword();
                     String username = user.getUsername();
@@ -94,8 +99,8 @@ public class SignIn extends AppCompatActivity {
     }**/
 
     public void openRegisterView(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(SignIn.this, Register.class);
+        this.startActivity(intent);
     }
 
 }

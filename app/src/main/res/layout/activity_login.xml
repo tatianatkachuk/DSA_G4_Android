@@ -82,7 +82,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textSignUp"
+        android:id="@+id/swapToRegisterButton"
         android:layout_width="61dp"
         android:layout_height="24dp"
         android:fontFamily="sans-serif-black"
@@ -95,7 +95,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.806"
-        android:onClick="openRegisterView"
         tools:ignore="MissingConstraints" />
 
     <EditText
