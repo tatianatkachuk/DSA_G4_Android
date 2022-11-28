@@ -16,7 +16,7 @@ public class APIClient {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://147.83.7.206:8080/dsaApp/")
-                //.baseUrl("http://147.83.7.208:8080/swagger/")
+                //.baseUrl("http://147.83.7.206:8080/swagger/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

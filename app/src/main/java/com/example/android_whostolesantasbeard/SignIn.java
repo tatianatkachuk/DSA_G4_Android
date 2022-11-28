@@ -74,9 +74,7 @@ public class SignIn extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(),"This user doesn't exist! Please try again", Toast.LENGTH_LONG);
                     runOnUiThread(new Runnable() {
                         @Override
-                        public void run() {
-                            toast.show();
-                        }
+                        public void run() {toast.show();}
                     });
                     return;
                 }

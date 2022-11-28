@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import android.widget.Toast;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,17 +31,25 @@ public class Main extends AppCompatActivity{
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
 
+
         swapToStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openStoreView(view);
+                openStore();
             }
         });
 
     }
 
     public void openStoreView(View view) {
-       /* Intent intent = new Intent(Main.this, Object.class);
-        this.startActivity(intent);*/
+        Intent intent = new Intent(Main.this, ShopItems.class);
+        this.startActivity(intent);
     }
+
+    public void openStore() {
+        Intent intent = new Intent(this, ShopItems.class);
+        startActivity(intent);
+    }
+
+
 }
