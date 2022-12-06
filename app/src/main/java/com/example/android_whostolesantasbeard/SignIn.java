@@ -2,6 +2,8 @@ package com.example.android_whostolesantasbeard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,12 +19,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SignIn extends AppCompatActivity {
-
+    // From activity
     TextView usernameVal;
     TextView passwordVal;
     Button signInButton;
     TextView swapToRegisterButton;
+
+    // API client
     IWSSBService service;
+
+    // Shared preferences
+    SharedPreferences shPrefs;
+    public static final String PREFERENCES = "prefs";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +44,18 @@ public class SignIn extends AppCompatActivity {
         passwordVal = (EditText) findViewById(R.id.passwordVal);
         signInButton = (Button) findViewById(R.id.signinButton);
         swapToRegisterButton = (TextView) findViewById(R.id.swapToRegisterButton);
+
+        // Shared preferences. It can only be accessed by the calling application
+        shPrefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+
+        // Obtains saved prefs from file and set them to the values
+        String usr = shPrefs.getString("username", "");
+        usernameVal.setText(usr);
+        String psw = shPrefs.getString("password","");
+        passwordVal.setText(psw);
+
+
+        // Swap to register or main
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,10 +84,15 @@ public class SignIn extends AppCompatActivity {
                 Log.d("TAG",response.code()+"");
                 if(response.code()==200) {
                     User user = response.body();
-                    String pass = user.getPassword();
                     String username = user.getUsername();
+                    String pass = user.getPassword();
                     String id = user.getId();
                     Log.d("User",username+" "+pass+" "+id);
+
+                    // Save to shared preferences
+                    saveIntoShPrefs(username, pass);
+
+                    // Open main
                     openApp(id);
                     return;
                 }
@@ -119,6 +146,21 @@ public class SignIn extends AppCompatActivity {
     public void openRegisterView(View view) {
         Intent intent = new Intent(SignIn.this, Register.class);
         this.startActivity(intent);
+    }
+
+    public void saveIntoShPrefs(String username, String password){
+        SharedPreferences shPrefs;
+        shPrefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = shPrefs.edit();
+
+        // Storing strings
+        editor.putString("username", username);
+        editor.putString("password", password);
+
+        // Commit changes
+        editor.commit();
+
     }
 
 }
