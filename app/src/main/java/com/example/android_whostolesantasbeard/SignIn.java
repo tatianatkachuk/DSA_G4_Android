@@ -1,5 +1,6 @@
 package com.example.android_whostolesantasbeard;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import android.content.Intent;
@@ -32,11 +34,19 @@ public class SignIn extends AppCompatActivity {
     SharedPreferences shPrefs;
     public static final String PREFERENCES = "prefs";
 
+    // Loader
+    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // Loader
+        progressBar = findViewById(R.id.loaderToMain);
+        // Finish
+        progressBar.setVisibility(View.GONE);
 
         service = APIClient.getClient().create(IWSSBService.class);
 
@@ -47,6 +57,7 @@ public class SignIn extends AppCompatActivity {
 
         // Shared preferences. It can only be accessed by the calling application
         shPrefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+
 
         // Obtains saved prefs from file and set them to the values
         String usr = shPrefs.getString("username", "");
@@ -59,6 +70,9 @@ public class SignIn extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Loader
+                progressBar = findViewById(R.id.loaderToMain);
+
                 loginToApp();
             }
         });
@@ -72,6 +86,8 @@ public class SignIn extends AppCompatActivity {
 
     }
     public void loginToApp(){
+
+
         String username = usernameVal.getText().toString();
         String pass = passwordVal.getText().toString();
         User signInCreds = new User("", username, pass);
@@ -83,6 +99,7 @@ public class SignIn extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 Log.d("TAG",response.code()+"");
                 if(response.code()==200) {
+
                     User user = response.body();
                     String username = user.getUsername();
                     String pass = user.getPassword();

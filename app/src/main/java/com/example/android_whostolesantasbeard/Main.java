@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import android.widget.Toast;
-
+import android.content.CursorLoader;
+import android.content.Loader;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,14 +24,25 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     IWSSBService service;
+
+    // Loader
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Loader
+        progressBar = findViewById(R.id.loaderMain);
+
+
         service = APIClient.getClient().create(IWSSBService.class);
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
+
+        // Loader finish
+        progressBar.setVisibility(View.GONE);
 
 
         swapToStore.setOnClickListener(new View.OnClickListener() {
