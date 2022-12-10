@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ public class SignIn extends AppCompatActivity {
     TextView passwordVal;
     Button signInButton;
     TextView swapToRegisterButton;
-
+    CheckBox rememberMeButton;
     // API client
     IWSSBService service;
 
@@ -54,7 +55,7 @@ public class SignIn extends AppCompatActivity {
         passwordVal = (EditText) findViewById(R.id.passwordVal);
         signInButton = (Button) findViewById(R.id.signinButton);
         swapToRegisterButton = (TextView) findViewById(R.id.swapToRegisterButton);
-
+        rememberMeButton = (CheckBox) findViewById(R.id.rememberMeButton);
         // Shared preferences. It can only be accessed by the calling application
         shPrefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
 
@@ -86,13 +87,9 @@ public class SignIn extends AppCompatActivity {
 
     }
     public void loginToApp(){
-
-
         String username = usernameVal.getText().toString();
         String pass = passwordVal.getText().toString();
         User signInCreds = new User("", username, pass);
-
-
         Call<User> call = service.loginUser(signInCreds);
         call.enqueue(new Callback<User>() {
             @Override
@@ -106,8 +103,12 @@ public class SignIn extends AppCompatActivity {
                     String id = user.getId();
                     Log.d("User",username+" "+pass+" "+id);
 
-                    // Save to shared preferences
-                    saveIntoShPrefs(username, pass);
+                    // Save to shared preferences IF the user wants to
+                    if(rememberMeButton.isChecked()){
+                        saveIntoShPrefs(username, pass);
+                        saveIntoShPrefsBoolean("isLogged",true);
+                    }
+
 
                     // Open main
                     openApp(id);
@@ -158,6 +159,7 @@ public class SignIn extends AppCompatActivity {
         Intent intent = new Intent(this, Main.class);
         intent.putExtra("id", id);
         startActivity(intent);
+
     }
 
     public void openRegisterView(View view) {
@@ -178,6 +180,13 @@ public class SignIn extends AppCompatActivity {
         // Commit changes
         editor.commit();
 
+    }
+    public void saveIntoShPrefsBoolean(String key, boolean value){
+        SharedPreferences shPrefs;
+        shPrefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = shPrefs.edit();
+        editor.putBoolean(key, value);
+        editor.commit();
     }
 
 }
