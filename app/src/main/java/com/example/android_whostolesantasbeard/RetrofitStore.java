@@ -1,14 +1,12 @@
 package com.example.android_whostolesantasbeard;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android_whostolesantasbeard.entities.Item;
-import com.example.android_whostolesantasbeard.entities.ShopItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Store extends AppCompatActivity {
+public class RetrofitStore extends AppCompatActivity {
 
     ArrayList<Item> items;
     IWSSBService service= APIClient.getClient().create(IWSSBService.class);

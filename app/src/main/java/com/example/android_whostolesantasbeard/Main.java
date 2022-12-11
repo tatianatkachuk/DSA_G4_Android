@@ -60,7 +60,7 @@ public class Main extends AppCompatActivity{
     }
 
     public void openStore() {
-        Intent intent = new Intent(this, ShopItems.class);
+        Intent intent = new Intent(this, StoreActivity.class);
         startActivity(intent);
     }
 

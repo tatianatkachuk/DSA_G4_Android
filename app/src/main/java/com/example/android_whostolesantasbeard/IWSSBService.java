@@ -1,5 +1,6 @@
 package com.example.android_whostolesantasbeard;
 
+import com.example.android_whostolesantasbeard.entities.Item;
 import com.example.android_whostolesantasbeard.entities.UserCredentials;
 
 import java.util.List;
@@ -16,4 +17,8 @@ public interface IWSSBService {
 
     @POST("user/logIn")
     Call<User> loginUser(@Body User user);
+
+    @GET("items/GetAllItems")
+    Call<List<Item>> itemsList(@Body  List<Item> items);
+
 }
