@@ -2,6 +2,7 @@ package com.example.android_whostolesantasbeard;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -89,19 +90,21 @@ public class SignIn extends AppCompatActivity {
     public void loginToApp(){
         String username = usernameVal.getText().toString();
         String pass = passwordVal.getText().toString();
-        User signInCreds = new User("", username, pass);
+        User signInCreds = new User("", username, pass, "", "");
         Call<User> call = service.loginUser(signInCreds);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 Log.d("TAG",response.code()+"");
                 if(response.code()==200) {
-
                     User user = response.body();
                     String username = user.getUsername();
                     String pass = user.getPassword();
                     String id = user.getId();
-                    Log.d("User",username+" "+pass+" "+id);
+                    String email = user.getMail();
+                    String coins = user.getCoins();
+
+                    Log.d("User",username+" "+pass+" "+id+" " + email + " " + coins);
 
                     // Save to shared preferences IF the user wants to
                     if(rememberMeButton.isChecked()){
@@ -109,9 +112,8 @@ public class SignIn extends AppCompatActivity {
                         saveIntoShPrefsBoolean("isLogged",true);
                     }
 
-
                     // Open main
-                    openApp(id);
+                    openApp(username);
                     return;
                 }
                 if(response.code()==404){
@@ -132,7 +134,21 @@ public class SignIn extends AppCompatActivity {
                             toast.show();
                         }
                     });
+                    return;
                 }
+
+                if(response.code()==500){
+                    Log.d("Error","Invalid credentials");
+                    Toast toast = Toast.makeText(getApplicationContext(),"Invalid credentials! Please try again", Toast.LENGTH_LONG);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            toast.show();
+                        }
+                    });
+                    return;
+                }
+
                 else{
                     Log.d("Error","Login failed");
                     Toast toast = Toast.makeText(getApplicationContext(),"Login failed! Please try again", Toast.LENGTH_LONG);
@@ -155,9 +171,9 @@ public class SignIn extends AppCompatActivity {
         });
     }
 
-    public void openApp(String id) {
+    public void openApp(String username) {
         Intent intent = new Intent(this, Main.class);
-        intent.putExtra("id", id);
+        intent.putExtra("username", username);
         startActivity(intent);
 
     }
@@ -167,6 +183,8 @@ public class SignIn extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+
+    //Shared Preferences
     public void saveIntoShPrefs(String username, String password){
         SharedPreferences shPrefs;
         shPrefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);

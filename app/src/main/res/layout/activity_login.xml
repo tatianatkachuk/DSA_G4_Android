@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.035" />
 
     <TextView
-        android:id="@+id/textSignIn"
+        android:id="@+id/nameText"
         android:layout_width="182dp"
         android:layout_height="51dp"
         android:layout_marginTop="176dp"

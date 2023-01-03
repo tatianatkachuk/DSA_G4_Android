@@ -3,7 +3,9 @@ package com.example.android_whostolesantasbeard;
 public class User {
     private String username;
     private String password;
+    private String email;
     private String id;
+    private String coins;
 
     public String getUsername() {
         return username;
@@ -22,19 +24,39 @@ public class User {
     }
 
     public String getId() {
-        return username;
+        return id;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
+    public String getMail() {
+        return email;
+    }
+
+    public void setMail(String email) {
+        this.email = email;
+    }
+
+    public String getCoins() {
+        return coins;
+    }
+
+    public void setCoins(String coins) {
+        this.coins = coins;
+    }
+
+
     //User Constructor
-    public User(String id, String username, String password){
+    public User(String id, String username, String password, String email, String coins){
         this.id = id;
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.coins = coins;
     }
+
 
     public User(){}
 
@@ -42,7 +64,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
-                "username='" + username + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

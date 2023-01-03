@@ -15,6 +15,8 @@ public class splashScreen extends AppCompatActivity {
     SharedPreferences shPrefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences preferences = getSharedPreferences(SignIn.PREFERENCES, 0);
+        preferences.edit().remove("isLogged").commit();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         getSupportActionBar().hide();

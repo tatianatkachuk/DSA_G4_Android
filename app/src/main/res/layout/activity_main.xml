@@ -10,6 +10,42 @@
     tools:context=".Main"
     >
 
+    <View
+        android:id="@+id/view4"
+        android:layout_width="334dp"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.587" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="334dp"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.695" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="334dp"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.81" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="115dp"
@@ -24,12 +60,11 @@
         app:layout_constraintVertical_bias="0.056" />
 
     <TextView
-        android:id="@+id/textSignIn"
+        android:id="@+id/nameText"
         android:layout_width="396dp"
         android:layout_height="56dp"
         android:fontFamily="sans-serif-black"
         android:keepScreenOn="false"
-        android:text="John Marlow"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="34sp"
@@ -149,7 +184,7 @@
         app:layout_constraintVertical_bias="0.647" />
 
     <TextView
-        android:id="@+id/settings"
+        android:id="@+id/settingsSwap"
         android:layout_width="244dp"
         android:layout_height="36dp"
         android:fontFamily="sans-serif-black"
@@ -185,7 +220,7 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintVertical_bias="0.479" />
 
     <View
         android:id="@+id/view"
@@ -197,7 +232,7 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
+        app:layout_constraintVertical_bias="0.373" />
 
     <ProgressBar
         android:id="@+id/loaderMain"
@@ -209,5 +244,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/closeSession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/black"
+        android:text="Exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/textCoins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" coins"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
