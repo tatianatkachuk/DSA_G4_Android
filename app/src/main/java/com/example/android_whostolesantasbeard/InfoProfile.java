@@ -3,6 +3,7 @@ package com.example.android_whostolesantasbeard;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +30,8 @@ public class InfoProfile extends AppCompatActivity {
         String mail = getIntent().getExtras().getString("mail");
         String id = getIntent().getExtras().getString("id");
         String coins = getIntent().getExtras().getString("coins");
+
+        Log.d("CRED coins:: ", coins);
 
         backButton = (ImageView) findViewById(R.id.backButton);
         emailVal = (TextView) findViewById(R.id.emailValue);

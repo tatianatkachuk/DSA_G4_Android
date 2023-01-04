@@ -83,14 +83,15 @@ public class Main extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 String username = getIntent().getExtras().getString("username");
-                getUserInfo(service, username, "settings");
+                getUserInfo(service, username, "info");
             }
         });
 
         settingsSwap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openSettings();
+                String username = getIntent().getExtras().getString("username");
+                getUserInfo(service, username, "settings");
             }
         });
 
@@ -116,7 +117,8 @@ public class Main extends AppCompatActivity{
                 if(response.code()==201){
                     User user = response.body();
                     if(activity == "main"){setUserInMain(user);}
-                    if(activity == "settings"){openProfileInfo(user);}
+                    if(activity == "info"){openProfileInfo(user);}
+                    if(activity == "settings"){openSettings(user);}
                     return;
                 }
                 if(response.code()==404){
@@ -180,8 +182,11 @@ public class Main extends AppCompatActivity{
     }
 
 
-    public void openSettings() {
+    public void openSettings(User user) {
         Intent intent = new Intent(this, Settings.class);
+        intent.putExtra("id", user.getId());
+        intent.putExtra("username", user.getUsername());
+        intent.putExtra("mail", user.getMail());
         startActivity(intent);
     }
 /**
