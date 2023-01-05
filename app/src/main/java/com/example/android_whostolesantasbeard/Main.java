@@ -30,6 +30,7 @@ public class Main extends AppCompatActivity{
     TextView swapToStore;
     TextView personalInfo;
     TextView settingsSwap;
+    TextView leaderBoard;
     Button closeSession;
     IWSSBService service;
 
@@ -66,6 +67,7 @@ public class Main extends AppCompatActivity{
         closeSession = (Button) findViewById(R.id.closeSession);
         nameText = (TextView) findViewById(R.id.nameText);
         coinsText = (TextView) findViewById(R.id.textCoins);
+        leaderBoard = (TextView) findViewById(R.id.leaderboard);
 
 
         // Loader finish
@@ -99,6 +101,12 @@ public class Main extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 logOut(view);
+            }
+        });
+        leaderBoard.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                openLeaderboard();
             }
         });
 
@@ -169,7 +177,10 @@ public class Main extends AppCompatActivity{
         Intent intent = new Intent(this, ShopItems.class);
         this.startActivity(intent);
     }
-
+    public void openLeaderboard(){
+        Intent intent = new Intent(this, Leaderboard.class);
+        this.startActivity(intent);
+    }
 
     public void openProfileInfo(User user) {
         Intent intent = new Intent(this, InfoProfile.class);
@@ -189,13 +200,4 @@ public class Main extends AppCompatActivity{
         intent.putExtra("mail", user.getMail());
         startActivity(intent);
     }
-/**
-    public void openLeaderBoard() {
-        Intent intent = new Intent(this, LeaderBoard.class);
-        startActivity(intent);
-    }**/
-
-
-
-
 }
