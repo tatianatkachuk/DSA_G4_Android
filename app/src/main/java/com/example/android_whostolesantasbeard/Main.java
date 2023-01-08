@@ -5,6 +5,7 @@ import static android.app.PendingIntent.getActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -29,7 +31,7 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     TextView personalInfo;
-    TextView settingsSwap;
+    ImageView settingsSwap;
     TextView leaderBoard;
     Button closeSession;
     IWSSBService service;
@@ -63,7 +65,7 @@ public class Main extends AppCompatActivity{
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
-        settingsSwap = (TextView) findViewById(R.id.settingsSwap);
+        settingsSwap = (ImageView) findViewById(R.id.Button_settings);
         closeSession = (Button) findViewById(R.id.closeSession);
         nameText = (TextView) findViewById(R.id.nameText);
         coinsText = (TextView) findViewById(R.id.textCoins);
