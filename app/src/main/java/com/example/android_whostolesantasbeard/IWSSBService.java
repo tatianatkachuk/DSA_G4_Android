@@ -1,16 +1,15 @@
 package com.example.android_whostolesantasbeard;
 
+import com.example.android_whostolesantasbeard.entities.Item;
 import com.example.android_whostolesantasbeard.entities.PasswordUpdate;
 import com.example.android_whostolesantasbeard.entities.UserCredentials;
 
 import java.util.List;
-import java.util.Observable;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -33,4 +32,7 @@ public interface IWSSBService {
 
     @DELETE("user/delete/{userID}")
     Call<User> deleteUser(@Path("userID") String userID);
+
+    @GET("items/itemsList")
+    Call <List<Item>> itemsList (@Body List<Item> items);
 }

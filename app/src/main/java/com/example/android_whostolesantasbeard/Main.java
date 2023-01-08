@@ -7,19 +7,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import android.widget.Toast;
-import android.content.CursorLoader;
-import android.content.Loader;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,7 +59,7 @@ public class Main extends AppCompatActivity{
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
-        settingsSwap = (TextView) findViewById(R.id.settingsSwap);
+        //settingsSwap = (TextView) findViewById(R.id.settingsSwap);
         closeSession = (Button) findViewById(R.id.closeSession);
         nameText = (TextView) findViewById(R.id.nameText);
         coinsText = (TextView) findViewById(R.id.textCoins);
@@ -169,12 +165,12 @@ public class Main extends AppCompatActivity{
     }
 
     public void openStoreView(View view) {
-        Intent intent = new Intent(Main.this, ShopItems.class);
+        Intent intent = new Intent(Main.this, ItemsStoreRecyclerViewAdapter.class);
         this.startActivity(intent);
     }
 
     public void openStore() {
-        Intent intent = new Intent(this, ShopItems.class);
+        Intent intent = new Intent(this, ItemsStoreRecyclerViewAdapter.class);
         this.startActivity(intent);
     }
     public void openLeaderboard(){
