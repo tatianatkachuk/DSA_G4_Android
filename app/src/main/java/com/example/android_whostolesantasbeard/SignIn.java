@@ -2,10 +2,10 @@ package com.example.android_whostolesantasbeard;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,11 +29,13 @@ public class SignIn extends AppCompatActivity {
     TextView usernameVal;
     TextView passwordVal;
     Button signInButton;
+    Button setSpanish;
+    Button setEnglish;
     TextView swapToRegisterButton;
     CheckBox rememberMeButton;
     // API client
     IWSSBService service;
-
+    String selectedLanguage;
     // Shared preferences
     SharedPreferences shPrefs;
     public static final String PREFERENCES = "prefs";
@@ -44,7 +48,6 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         // Loader
         progressBar = findViewById(R.id.loaderToMain);
         // Finish
@@ -59,7 +62,8 @@ public class SignIn extends AppCompatActivity {
         rememberMeButton = (CheckBox) findViewById(R.id.rememberMeButton);
         // Shared preferences. It can only be accessed by the calling application
         shPrefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
-
+        setEnglish = (Button) findViewById(R.id.button_ToEnglish);
+        setSpanish = (Button) findViewById(R.id.button_setSpanish);
 
         // Obtains saved prefs from file and set them to the values
         String usr = shPrefs.getString("username", "");
@@ -67,7 +71,35 @@ public class SignIn extends AppCompatActivity {
         String psw = shPrefs.getString("password","");
         passwordVal.setText(psw);
 
+        setEnglish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedLanguage = "en";
+                Call<User> call2 = service.updateLanguageUsed(selectedLanguage);
+                saveIntoShPrefsString("LANG",selectedLanguage);
+                updateLang();
+            }
+        });
+        setSpanish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedLanguage = "es";
+                Call<User> call2 = service.updateLanguageUsed(selectedLanguage);
+                call2.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        Log.d("TAGG","WORKED");
+                    }
 
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Log.d("TAGG","FAILED");
+                    }
+                });
+                saveIntoShPrefsString("LANG",selectedLanguage);
+                updateLang();
+            }
+        });
         // Swap to register or main
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +146,8 @@ public class SignIn extends AppCompatActivity {
 
                     // Open main
                     openApp(username);
+
+
                     return;
                 }
                 if(response.code()==404){
@@ -205,6 +239,31 @@ public class SignIn extends AppCompatActivity {
         SharedPreferences.Editor editor = shPrefs.edit();
         editor.putBoolean(key, value);
         editor.commit();
+    }
+    public void saveIntoShPrefsString(String key, String value){
+        SharedPreferences shPrefs;
+        shPrefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = shPrefs.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+    public void updateLang(){
+        String languageToLoad  = selectedLanguage; // your language
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+       // getBaseContext().getResources().updateConfiguration(config,
+          //      getBaseContext().getResources().getDisplayMetrics());
+        Intent refresh = new Intent(this, this.getClass());
+        startActivity(refresh);
+        finish();
+    }
+    public String GetStringFromPref(String key){
+        shPrefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        String result =  shPrefs.getString(key,"");
+        return result;
     }
 
 }

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="260dp"
         android:checked="true"
-        android:text="Remember Me"
+        android:text="@string/login_rememberMe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.083"
@@ -27,7 +27,7 @@
         android:layout_marginTop="40dp"
         android:backgroundTint="#F44336"
         android:onClick="attemptRegistration"
-        android:text="Sign In"
+        android:text="@string/login_mainTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,26 +36,26 @@
 
     <TextView
         android:id="@+id/nameText"
-        android:layout_width="182dp"
-        android:layout_height="51dp"
+        android:layout_width="366dp"
+        android:layout_height="62dp"
         android:layout_marginTop="176dp"
         android:fontFamily="sans-serif-black"
         android:keepScreenOn="false"
-        android:text="Sign In"
+        android:text="@string/login_mainTitle"
         android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textForgotPass"
-        android:layout_width="140dp"
-        android:layout_height="28dp"
+        android:layout_width="207dp"
+        android:layout_height="25dp"
         android:fontFamily="sans-serif-black"
-        android:text="Forgot Password?"
+        android:text="@string/login_forgotPassword"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,10 +80,10 @@
 
     <TextView
         android:id="@+id/textpassword"
-        android:layout_width="65dp"
-        android:layout_height="15dp"
+        android:layout_width="152dp"
+        android:layout_height="19dp"
         android:fontFamily="sans-serif-black"
-        android:text="Password"
+        android:text="@string/login_password"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,10 +95,10 @@
 
     <TextView
         android:id="@+id/swapToRegisterButton"
-        android:layout_width="61dp"
-        android:layout_height="24dp"
+        android:layout_width="97dp"
+        android:layout_height="25dp"
         android:fontFamily="sans-serif-black"
-        android:text="Sign Up"
+        android:text="@string/signUp_signUp"
         android:textAlignment="textEnd"
         android:textColor="#F44336"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -125,17 +125,17 @@
 
     <TextView
         android:id="@+id/textusername"
-        android:layout_width="80dp"
-        android:layout_height="17dp"
+        android:layout_width="151dp"
+        android:layout_height="24dp"
         android:fontFamily="sans-serif-black"
-        android:text="Username"
+        android:text="@string/login_username"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36"
+        app:layout_constraintVertical_bias="0.352"
         tools:ignore="MissingConstraints" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -160,5 +160,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_setSpanish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="Español"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_ToEnglish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="English"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

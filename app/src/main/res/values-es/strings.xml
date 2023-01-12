@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">¿Quién le robó la barba a Santa?</string>
+    <string name="login_mainTitle"> Iniciar Sesión</string>
+    <string name="login_username">Nombre de Usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_rememberMe">Recuérdame</string>
+    <string name="login_forgotPassword">¿Olvidaste la contraseña?</string>
+    <string name="signUp_signUp">Regitrarse</string>
+</resources>

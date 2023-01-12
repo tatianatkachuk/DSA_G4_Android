@@ -33,4 +33,7 @@ public interface IWSSBService {
 
     @DELETE("user/delete/{userID}")
     Call<User> deleteUser(@Path("userID") String userID);
+
+    @PUT("user/setLanguage/{langCode}")
+    Call<User> updateLanguageUsed(@Path("langCode") String langCode);
 }
