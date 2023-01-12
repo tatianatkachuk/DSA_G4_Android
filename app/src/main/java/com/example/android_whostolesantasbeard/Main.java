@@ -5,6 +5,7 @@ import static android.app.PendingIntent.getActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -25,7 +27,7 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     TextView personalInfo;
-    TextView settingsSwap;
+    ImageView settingsSwap;
     TextView leaderBoard;
     Button closeSession;
     IWSSBService service;
@@ -59,7 +61,8 @@ public class Main extends AppCompatActivity{
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
-        //settingsSwap = (TextView) findViewById(R.id.settingsSwap);
+
+        settingsSwap = (ImageView) findViewById(R.id.imageView5);
         closeSession = (Button) findViewById(R.id.closeSession);
         nameText = (TextView) findViewById(R.id.nameText);
         coinsText = (TextView) findViewById(R.id.textCoins);
@@ -164,13 +167,9 @@ public class Main extends AppCompatActivity{
         finish();
     }
 
-    public void openStoreView(View view) {
-        Intent intent = new Intent(Main.this, ItemsStoreRecyclerViewAdapter.class);
-        this.startActivity(intent);
-    }
 
     public void openStore() {
-        Intent intent = new Intent(this, ItemsStoreRecyclerViewAdapter.class);
+        Intent intent = new Intent(this, Store.class);
         this.startActivity(intent);
     }
     public void openLeaderboard(){

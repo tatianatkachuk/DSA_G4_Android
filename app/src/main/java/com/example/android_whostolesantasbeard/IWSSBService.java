@@ -2,6 +2,7 @@ package com.example.android_whostolesantasbeard;
 
 import com.example.android_whostolesantasbeard.entities.Item;
 import com.example.android_whostolesantasbeard.entities.PasswordUpdate;
+import com.example.android_whostolesantasbeard.entities.Question;
 import com.example.android_whostolesantasbeard.entities.UserCredentials;
 
 import java.util.List;
@@ -34,5 +35,8 @@ public interface IWSSBService {
     Call<User> deleteUser(@Path("userID") String userID);
 
     @GET("items/itemsList")
-    Call <List<Item>> itemsList (@Body List<Item> items);
+    Call <List<Item>> itemsList ();
+
+    @GET("faq/questionsList")
+    Call<List<Question>> questionsList();
 }
