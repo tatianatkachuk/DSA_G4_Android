@@ -83,6 +83,7 @@ public class Register extends AppCompatActivity {
                             toast.show();
                         }
                     });
+
                 }
 
                 else{

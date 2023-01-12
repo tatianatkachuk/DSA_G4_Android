@@ -33,7 +33,7 @@ public class Main extends AppCompatActivity{
     TextView personalInfo;
     ImageView settingsSwap;
     TextView leaderBoard;
-    Button closeSession;
+    Button closeSession, btnQuery;
     IWSSBService service;
 
     TextView nameText;
@@ -71,6 +71,8 @@ public class Main extends AppCompatActivity{
         coinsText = (TextView) findViewById(R.id.textCoins);
         leaderBoard = (TextView) findViewById(R.id.leaderboard);
 
+        //Added for Minim2
+        btnQuery=(Button) findViewById(R.id.btnQuery);
 
         // Loader finish
         progressBar.setVisibility(View.GONE);
@@ -109,6 +111,14 @@ public class Main extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 openLeaderboard();
+            }
+        });
+
+        btnQuery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), QueryActivity.class);
+                startActivity(intent);
             }
         });
 

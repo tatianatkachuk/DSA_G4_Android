@@ -109,7 +109,7 @@ public class SignIn extends AppCompatActivity {
                     // Save to shared preferences IF the user wants to
                     if(rememberMeButton.isChecked()){
                         saveIntoShPrefs(username, pass);
-                        saveIntoShPrefsBoolean("isLogged",true);
+                        saveIntoShPrefsBoolean("isLogged",true); //es pq el remember me es quedi marcat
                     }
 
                     // Open main
@@ -179,8 +179,7 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void openRegisterView(View view) {
-        Intent intent = new Intent(SignIn.this, Register.class);
-        this.startActivity(intent);
+
     }
 
 

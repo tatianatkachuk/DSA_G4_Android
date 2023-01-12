@@ -1,6 +1,7 @@
 package com.example.android_whostolesantasbeard;
 
 import com.example.android_whostolesantasbeard.entities.PasswordUpdate;
+import com.example.android_whostolesantasbeard.entities.Query;
 import com.example.android_whostolesantasbeard.entities.UserCredentials;
 
 import java.util.List;
@@ -33,4 +34,7 @@ public interface IWSSBService {
 
     @DELETE("user/delete/{userID}")
     Call<User> deleteUser(@Path("userID") String userID);
+
+    @POST("user/question")
+    Call<Query> askQuery(@Body Query query);
 }
