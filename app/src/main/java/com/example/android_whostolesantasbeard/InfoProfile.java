@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class InfoProfile extends AppCompatActivity {
 
-    ImageView backButton;
+    ImageView backButton, profileImage;
     IWSSBService service;
     TextView emailVal;
     TextView userNameVal;
@@ -30,10 +30,12 @@ public class InfoProfile extends AppCompatActivity {
         String mail = getIntent().getExtras().getString("mail");
         String id = getIntent().getExtras().getString("id");
         String coins = getIntent().getExtras().getString("coins");
+        Integer imageID = getIntent().getExtras().getInt("im");
 
         Log.d("CRED coins:: ", coins);
 
         backButton = (ImageView) findViewById(R.id.backButton);
+        profileImage = (ImageView) findViewById(R.id.profile_image3);
         emailVal = (TextView) findViewById(R.id.emailValue);
         userNameVal = (TextView) findViewById(R.id.nameVal);
         idVal = (TextView) findViewById(R.id.idValue);
@@ -43,6 +45,23 @@ public class InfoProfile extends AppCompatActivity {
         userNameVal.setText(username);
         idVal.setText(id);
         coinsVal.setText(coins);
+
+        if(imageID.intValue() == 1){
+            profileImage.setImageResource(R.drawable.avatar1);
+            }
+        if(imageID == 2){
+            profileImage.setImageResource(R.drawable.avatar2);
+            }
+        if(imageID == 3){
+            profileImage.setImageResource(R.drawable.avatar3);
+            }
+        if(imageID == 4){
+            profileImage.setImageResource(R.drawable.avatar4);
+            }
+        if(imageID == 0){
+            profileImage.setImageResource(R.drawable.noavatar);
+            }
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,7 +31,8 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     TextView personalInfo;
-    Button settingsSwap;
+    //Button settingsSwap;
+    ImageView settingsSwap;
     TextView leaderBoard;
     Button closeSession;
     TextView issues;
@@ -70,7 +71,8 @@ public class Main extends AppCompatActivity{
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
-        settingsSwap = (Button) findViewById(R.id.settingsSwap);
+        //settingsSwap = (Button) findViewById(R.id.settingsSwap);
+        settingsSwap = (ImageView) findViewById(R.id.settingsSwap);
         closeSession = (Button) findViewById(R.id.closeSession);
         issues = (TextView) findViewById(R.id.issues);
         nameText = (TextView) findViewById(R.id.nameText);
@@ -128,7 +130,7 @@ public class Main extends AppCompatActivity{
         issues.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                openIssue();
+                openIssue(username);
             }
         });
 
@@ -178,23 +180,18 @@ public class Main extends AppCompatActivity{
                     Log.d("IMAGE", String.valueOf(imageID));
 
                     if(imageID.intValue() == 1){
-                        Log.d("aqui 1", String.valueOf(imageID));
                         profileImage.setImageResource(R.drawable.avatar1);
                         return;}
                     if(imageID == 2){
-                        Log.d("aqui 2", String.valueOf(imageID));
                         profileImage.setImageResource(R.drawable.avatar2);
                         return;}
                     if(imageID == 3){
-                        Log.d("aqui 3", String.valueOf(imageID));
                         profileImage.setImageResource(R.drawable.avatar3);
                         return;}
                     if(imageID == 4){
-                        Log.d("aqui 4", String.valueOf(imageID));
                         profileImage.setImageResource(R.drawable.avatar4);
                         return;}
 
-                    Log.d("aqui 0", String.valueOf(imageID));
                     profileImage.setImageResource(R.drawable.noavatar);
 
 
@@ -249,8 +246,9 @@ public class Main extends AppCompatActivity{
         this.startActivity(intent);
     }
 
-    public void openIssue() {
+    public void openIssue(String username) {
         Intent intent = new Intent(this, ReportIssue.class);
+        intent.putExtra("username", username);
         this.startActivity(intent);
     }
 
@@ -266,6 +264,7 @@ public class Main extends AppCompatActivity{
         intent.putExtra("username", user.getUsername());
         intent.putExtra("mail", user.getMail());
         intent.putExtra("coins", user.getCoins());
+        intent.putExtra("im", user.getImageID());
         startActivity(intent);
     }
 

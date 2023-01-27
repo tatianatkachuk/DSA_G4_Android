@@ -197,13 +197,13 @@
         app:layout_constraintVertical_bias="0.647" />
     =======
 
-    <Button
+    <ImageView
         android:id="@+id/settingsSwap"
         android:layout_width="41dp"
         android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.056"
@@ -276,9 +276,11 @@
         android:layout_width="42dp"
         android:layout_height="44dp"
         app:layout_constraintBottom_toTopOf="@+id/nameText"
-        app:layout_constraintEnd_toStartOf="@+id/profile_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/closeSession"
+        app:layout_constraintEnd_toStartOf="@+id/settingsSwap"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toEndOf="@+id/closeSession"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307"
         app:srcCompat="@drawable/question" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

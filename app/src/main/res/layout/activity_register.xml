@@ -86,30 +86,31 @@
         android:id="@+id/textSignIn3"
         android:layout_width="182dp"
         android:layout_height="51dp"
-        android:layout_marginTop="176dp"
         android:fontFamily="sans-serif-black"
         android:keepScreenOn="false"
         android:text="Register"
         android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.261" />
 
     <EditText
         android:id="@+id/emailTextField"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="340dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/usernameTextField"
@@ -121,19 +122,22 @@
         app:layout_constraintBottom_toTopOf="@+id/emailTextField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/passwordTextField"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="264dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.613" />
 
     <Button
         android:id="@+id/registerButton"

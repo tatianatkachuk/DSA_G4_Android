@@ -16,6 +16,11 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,7 +28,6 @@ import retrofit2.Response;
 public class ReportIssue extends AppCompatActivity {
     // From activity
     TextView dateVal;
-    TextView informerVal;
     TextView messageVal;
     Button submitButton;
 
@@ -36,11 +40,12 @@ public class ReportIssue extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_issue);
+        String username = getIntent().getExtras().getString("username");
 
         service = APIClient.getClient().create(IWSSBService.class);
 
-        dateVal = (EditText) findViewById(R.id.dateVal);
-        informerVal = (EditText) findViewById(R.id.informerVal);
+        dateVal = (TextView) findViewById(R.id.dateVal);
+        dateVal.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         messageVal = (EditText) findViewById(R.id.messageVal);
 
         submitButton = (Button) findViewById(R.id.submitButton);
@@ -59,14 +64,14 @@ public class ReportIssue extends AppCompatActivity {
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backToMain();
+                backToMain(username);
             }
         });
 
     }
     public void submitReport(){
-        String date = dateVal.getText().toString();
-        String informer = informerVal.getText().toString();
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String informer = getIntent().getExtras().getString("username");
         String message = messageVal.getText().toString();
 
         Issue i = new Issue(date, informer, message);
@@ -93,6 +98,9 @@ public class ReportIssue extends AppCompatActivity {
                         }
                     });
 
+                    Intent intent = new Intent(getApplicationContext(), Main.class);
+                    intent.putExtra("username", getIntent().getExtras().getString("username"));
+                    startActivity(intent);
                     return;
                 }
 
@@ -128,10 +136,12 @@ public class ReportIssue extends AppCompatActivity {
             }
 
         });
+
     }
 
-    public void backToMain() {
+    public void backToMain(String username) {
         Intent intent = new Intent(this, Main.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 

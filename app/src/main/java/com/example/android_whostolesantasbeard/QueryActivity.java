@@ -76,6 +76,7 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
                         public void run() {toast.show();}
                     });
                     Intent intent = new Intent(getApplicationContext(), Main.class);
+                    intent.putExtra("username", getIntent().getExtras().getString("username"));
                     startActivity(intent);
                 }
                 else{

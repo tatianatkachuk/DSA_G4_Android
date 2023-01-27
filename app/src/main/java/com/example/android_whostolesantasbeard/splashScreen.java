@@ -19,7 +19,7 @@ public class splashScreen extends AppCompatActivity {
         preferences.edit().remove("isLogged").commit();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         shPrefs = getSharedPreferences(SignIn.PREFERENCES, Context.MODE_PRIVATE);
         boolean isLogged = shPrefs.getBoolean("isLogged",false);
         Intent intent;
