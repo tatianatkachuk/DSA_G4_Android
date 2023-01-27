@@ -50,27 +50,11 @@
 
     <EditText
         android:id="@+id/editTextTitle"
-        tools:ignore="MissingConstraints"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Title"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
-
-    <EditText
-        android:id="@+id/editTextDate"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="64dp"
         android:ems="10"
-        android:hint="Date"
+        android:hint="Title"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"

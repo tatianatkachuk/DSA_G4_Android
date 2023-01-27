@@ -13,13 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android_whostolesantasbeard.entities.Query;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class QueryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText editTextDate, editTextTitle, editTextMessage;
+    private EditText editTextTitle, editTextMessage;
     private Button btnSend;
     private ImageView imageViewBackToMain;
 
@@ -33,7 +36,6 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
         service = APIClient.getClient().create(IWSSBService.class);
         String username = getIntent().getExtras().getString("username");
 
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
         editTextTitle = (EditText) findViewById(R.id.editTextTitle);
         editTextMessage = (EditText) findViewById(R.id.editTextMessage);
 
@@ -55,7 +57,7 @@ public class QueryActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
 
-        String date = editTextDate.getText().toString();
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         String title = editTextTitle.getText().toString();
         String message = editTextMessage.getText().toString();
         String sender = getIntent().getExtras().getString("username");
