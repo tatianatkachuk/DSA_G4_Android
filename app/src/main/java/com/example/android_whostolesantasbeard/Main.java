@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.view.View;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -21,8 +20,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import android.widget.Toast;
-import android.content.CursorLoader;
-import android.content.Loader;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,7 +31,7 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     TextView personalInfo;
-    ImageView settingsSwap;
+    Button settingsSwap;
     TextView leaderBoard;
     Button closeSession;
     TextView issues;
@@ -70,29 +67,9 @@ public class Main extends AppCompatActivity{
 
         profileImage = (ImageView) findViewById(R.id.profile_image);
 
-        /**
-         PROFILE IMAGE
-
-
-
-        try {
-            String selectedImage = getIntent().getExtras().getString("selectedImage");
-            Log.d("SELECTED IMAGE::::", selectedImage);
-            switch (selectedImage){
-                case "avatar1": profileImage.setImageResource(R.drawable.avatar1);
-                case "avatar2": profileImage.setImageResource(R.drawable.avatar2);
-                case "avatar3": profileImage.setImageResource(R.drawable.avatar3);
-                case "avatar4": profileImage.setImageResource(R.drawable.avatar4);
-                default: profileImage.setImageResource(R.drawable.noavatar);
-            }
-
-        }catch(Exception e){
-            Log.d("EXCEPTION ::::", e.toString());}
-         **/
-
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
-        settingsSwap = (ImageView) findViewById(R.id.Button_settings);
+        settingsSwap = (Button) findViewById(R.id.settingsSwap);
         closeSession = (Button) findViewById(R.id.closeSession);
         issues = (TextView) findViewById(R.id.issues);
         nameText = (TextView) findViewById(R.id.nameText);
@@ -253,12 +230,12 @@ public class Main extends AppCompatActivity{
     }
 
     public void openStoreView(View view) {
-        Intent intent = new Intent(Main.this, ShopItems.class);
+        Intent intent = new Intent(this, Store.class);
         this.startActivity(intent);
     }
 
     public void openStore() {
-        Intent intent = new Intent(this, ShopItems.class);
+        Intent intent = new Intent(this, Store.class);
         this.startActivity(intent);
     }
 

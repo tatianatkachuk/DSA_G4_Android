@@ -1,10 +1,10 @@
 package com.example.android_whostolesantasbeard;
 
+import com.example.android_whostolesantasbeard.entities.Item;
 import com.example.android_whostolesantasbeard.entities.PasswordUpdate;
 import com.example.android_whostolesantasbeard.entities.UserCredentials;
 
 import java.util.List;
-import java.util.Observable;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -38,5 +38,8 @@ public interface IWSSBService {
 
     @PUT("user/updateImage/{id}/{newImage}")
     Call<User> updateProfileImage(@Path("id") String userID, @Path("newImage") Integer newImage);
+
+    @GET("items/itemsList")
+    Call <List<Item>> itemsList (@Body List<Item> items);
 
 }
