@@ -13,11 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.EditText;
 import android.widget.ImageView;
-=======
->>>>>>> Store
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -31,11 +28,7 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     TextView personalInfo;
-<<<<<<< HEAD
-    ImageView settingsSwap;
-=======
     Button settingsSwap;
->>>>>>> Store
     TextView leaderBoard;
     Button closeSession;
     IWSSBService service;
@@ -69,11 +62,7 @@ public class Main extends AppCompatActivity{
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
-<<<<<<< HEAD
-        settingsSwap = (ImageView) findViewById(R.id.Button_settings);
-=======
         settingsSwap = (Button) findViewById(R.id.settingsSwap);
->>>>>>> Store
         closeSession = (Button) findViewById(R.id.closeSession);
         nameText = (TextView) findViewById(R.id.nameText);
         coinsText = (TextView) findViewById(R.id.textCoins);
