@@ -5,6 +5,7 @@ import static android.app.PendingIntent.getActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.view.View;
 
@@ -29,11 +30,14 @@ import retrofit2.Response;
 
 public class Main extends AppCompatActivity{
 
+    ImageView profileImage;
+
     TextView swapToStore;
     TextView personalInfo;
     ImageView settingsSwap;
     TextView leaderBoard;
     Button closeSession;
+    TextView issues;
     IWSSBService service;
 
     TextView nameText;
@@ -41,7 +45,9 @@ public class Main extends AppCompatActivity{
 
     String username;
 
-    User user = new User("", "", "", "", "");
+    String selectedImage;
+
+    User user = new User("", "", "", "", "", 0);
     // Loader
     private ProgressBar progressBar;
 
@@ -62,11 +68,33 @@ public class Main extends AppCompatActivity{
         String username = getIntent().getExtras().getString("username");
         getUserInfo(service, username, "main");
 
+        profileImage = (ImageView) findViewById(R.id.profile_image);
+
+        /**
+         PROFILE IMAGE
+
+
+
+        try {
+            String selectedImage = getIntent().getExtras().getString("selectedImage");
+            Log.d("SELECTED IMAGE::::", selectedImage);
+            switch (selectedImage){
+                case "avatar1": profileImage.setImageResource(R.drawable.avatar1);
+                case "avatar2": profileImage.setImageResource(R.drawable.avatar2);
+                case "avatar3": profileImage.setImageResource(R.drawable.avatar3);
+                case "avatar4": profileImage.setImageResource(R.drawable.avatar4);
+                default: profileImage.setImageResource(R.drawable.noavatar);
+            }
+
+        }catch(Exception e){
+            Log.d("EXCEPTION ::::", e.toString());}
+         **/
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
         settingsSwap = (ImageView) findViewById(R.id.Button_settings);
         closeSession = (Button) findViewById(R.id.closeSession);
+        issues = (TextView) findViewById(R.id.issues);
         nameText = (TextView) findViewById(R.id.nameText);
         coinsText = (TextView) findViewById(R.id.textCoins);
         leaderBoard = (TextView) findViewById(R.id.leaderboard);
@@ -75,6 +103,12 @@ public class Main extends AppCompatActivity{
         // Loader finish
         progressBar.setVisibility(View.GONE);
 
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectImage(username);
+            }
+        });
 
         swapToStore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +139,7 @@ public class Main extends AppCompatActivity{
                 logOut(view);
             }
         });
+
         leaderBoard.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -112,7 +147,25 @@ public class Main extends AppCompatActivity{
             }
         });
 
+        issues.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                openIssue();
+            }
+        });
+
     }
+
+    ///////////////////////////////////////////
+    ///////////////profile Image///////////////
+    ///////////////////////////////////////////
+
+    public void selectImage(String usr) {
+        Intent intent = new Intent(this, SelectImage.class);
+        intent.putExtra("username", usr);
+        this.startActivity(intent);
+    }
+
 
     ///////////////////////////////////////////
     ///////////////user Info///////////////////
@@ -126,9 +179,38 @@ public class Main extends AppCompatActivity{
                 Log.d("TAG",response.code()+"");
                 if(response.code()==201){
                     User user = response.body();
+                    String prueba = user.getId();
+                    Log.d("ID user", String.valueOf(prueba));
+
                     if(activity == "main"){setUserInMain(user);}
                     if(activity == "info"){openProfileInfo(user);}
                     if(activity == "settings"){openSettings(user);}
+
+                    Integer imageID = user.getImageID();
+
+                    Log.d("IMAGE", String.valueOf(imageID));
+
+                    if(imageID.intValue() == 1){
+                        Log.d("aqui 1", String.valueOf(imageID));
+                        profileImage.setImageResource(R.drawable.avatar1);
+                        return;}
+                    if(imageID == 2){
+                        Log.d("aqui 2", String.valueOf(imageID));
+                        profileImage.setImageResource(R.drawable.avatar2);
+                        return;}
+                    if(imageID == 3){
+                        Log.d("aqui 3", String.valueOf(imageID));
+                        profileImage.setImageResource(R.drawable.avatar3);
+                        return;}
+                    if(imageID == 4){
+                        Log.d("aqui 4", String.valueOf(imageID));
+                        profileImage.setImageResource(R.drawable.avatar4);
+                        return;}
+
+                    Log.d("aqui 0", String.valueOf(imageID));
+                    profileImage.setImageResource(R.drawable.noavatar);
+
+
                     return;
                 }
                 if(response.code()==404){
@@ -179,6 +261,12 @@ public class Main extends AppCompatActivity{
         Intent intent = new Intent(this, ShopItems.class);
         this.startActivity(intent);
     }
+
+    public void openIssue() {
+        Intent intent = new Intent(this, ReportIssue.class);
+        this.startActivity(intent);
+    }
+
     public void openLeaderboard(){
         Intent intent = new Intent(this, Leaderboard.class);
         this.startActivity(intent);
@@ -193,7 +281,6 @@ public class Main extends AppCompatActivity{
         intent.putExtra("coins", user.getCoins());
         startActivity(intent);
     }
-
 
     public void openSettings(User user) {
         Intent intent = new Intent(this, Settings.class);

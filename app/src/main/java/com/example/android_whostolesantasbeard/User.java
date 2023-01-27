@@ -6,6 +6,7 @@ public class User {
     private String email;
     private String id;
     private String coins;
+    private Integer image;
 
     public String getUsername() {
         return username;
@@ -47,14 +48,23 @@ public class User {
         this.coins = coins;
     }
 
+    public Integer getImageID() {
+        return image;
+    }
+
+    public void setImageID(Integer image) {
+        this.image = image;
+    }
+
 
     //User Constructor
-    public User(String id, String username, String password, String email, String coins){
+    public User(String id, String username, String password, String email, String coins, Integer image){
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.coins = coins;
+        this.image = image;
     }
 
 

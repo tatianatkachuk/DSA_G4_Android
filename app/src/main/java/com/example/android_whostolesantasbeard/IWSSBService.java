@@ -10,7 +10,6 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -21,6 +20,9 @@ public interface IWSSBService {
 
     @POST("user/logIn")
     Call<User> loginUser(@Body User user);
+
+    @POST("user/issue")
+    Call<Issue> reportIssue(@Body Issue issueInfo);
 
     @GET ("user/{userName}")
     Call<User> getUserbyUserName(@Path("userName") String userName);
@@ -33,4 +35,8 @@ public interface IWSSBService {
 
     @DELETE("user/delete/{userID}")
     Call<User> deleteUser(@Path("userID") String userID);
+
+    @PUT("user/updateImage/{id}/{newImage}")
+    Call<User> updateProfileImage(@Path("id") String userID, @Path("newImage") Integer newImage);
+
 }

@@ -54,6 +54,8 @@
         <activity android:name=".ShopItems" />
         <activity android:name=".InfoProfile" />
         <activity android:name=".Settings" />
+        <activity android:name=".ReportIssue" />
+        <activity android:name=".SelectImage" />
     </application>
 
 </manifest>

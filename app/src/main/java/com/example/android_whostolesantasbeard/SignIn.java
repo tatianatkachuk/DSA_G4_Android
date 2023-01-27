@@ -90,7 +90,7 @@ public class SignIn extends AppCompatActivity {
     public void loginToApp(){
         String username = usernameVal.getText().toString();
         String pass = passwordVal.getText().toString();
-        User signInCreds = new User("", username, pass, "", "");
+        User signInCreds = new User("", username, pass, "", "", 0);
         Call<User> call = service.loginUser(signInCreds);
         call.enqueue(new Callback<User>() {
             @Override
@@ -103,6 +103,7 @@ public class SignIn extends AppCompatActivity {
                     String id = user.getId();
                     String email = user.getMail();
                     String coins = user.getCoins();
+                    Integer imageID = user.getImageID();
 
                     Log.d("User",username+" "+pass+" "+id+" " + email + " " + coins);
 
