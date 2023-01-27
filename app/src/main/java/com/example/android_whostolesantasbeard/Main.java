@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class Main extends AppCompatActivity{
 
-    ImageView profileImage;
+    ImageView profileImage, askImg;
 
     TextView swapToStore;
     TextView personalInfo;
@@ -66,6 +66,7 @@ public class Main extends AppCompatActivity{
         getUserInfo(service, username, "main");
 
         profileImage = (ImageView) findViewById(R.id.profile_image);
+        askImg = (ImageView) findViewById(R.id.askImg);
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
@@ -128,6 +129,15 @@ public class Main extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 openIssue();
+            }
+        });
+
+        askImg.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), QueryActivity.class);
+                intent.putExtra("username", username);
+                startActivity(intent);
             }
         });
 

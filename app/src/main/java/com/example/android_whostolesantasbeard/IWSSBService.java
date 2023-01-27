@@ -2,6 +2,7 @@ package com.example.android_whostolesantasbeard;
 
 import com.example.android_whostolesantasbeard.entities.Item;
 import com.example.android_whostolesantasbeard.entities.PasswordUpdate;
+import com.example.android_whostolesantasbeard.entities.Query;
 import com.example.android_whostolesantasbeard.entities.UserCredentials;
 
 import java.util.List;
@@ -41,5 +42,8 @@ public interface IWSSBService {
 
     @GET("items/itemsList")
     Call <List<Item>> itemsList (@Body List<Item> items);
+
+    @POST("user/question")
+    Call<Query> askQuery(@Body Query query);
 
 }
