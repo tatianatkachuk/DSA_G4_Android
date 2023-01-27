@@ -1,76 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".Leaderboard">
 
-    android:background="#1A5A17"
-    tools:context=".ShopItems">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecyclerView"
+        android:layout_width="401dp"
+        android:layout_height="561dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57" />
 
+    <TextView
+        android:id="@+id/store_mainTitle"
+        android:layout_width="267dp"
+        android:layout_height="80dp"
+        android:text="Store"
+        android:textAlignment="center"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:id="@+id/productPrice"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
-            android:text="Price"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintHorizontal_bias="0.629"
-            app:layout_constraintLeft_toRightOf="@+id/productDescription"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/productName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Name of the Product"
-            android:textColor="#F44336"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/productDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/productDescription"
-            android:layout_width="150dp"
-            android:layout_height="0dp"
-            android:text="Description"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productName" />
-
-        <Button
-            android:id="@+id/buttonToBuy"
-            android:layout_width="54dp"
-            android:layout_height="39dp"
-            android:layout_marginBottom="30dp"
-            android:backgroundTint="#F44336"
-            android:enabled="true"
-            android:text="+"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.971"
-            app:layout_constraintLeft_toRightOf="@+id/productDescription"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productPrice"
-            app:layout_constraintVertical_bias="1.0" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
+    <Button
+        android:id="@+id/store_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

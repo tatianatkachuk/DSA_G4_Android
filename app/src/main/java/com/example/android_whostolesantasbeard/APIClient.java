@@ -15,8 +15,9 @@ public class APIClient {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://147.83.7.206:8080/dsaApp/")
-                //.baseUrl("http://147.83.7.206:8080/swagger/")
+               .baseUrl("http://10.0.2.2:8080/dsaApp/")
+               // .baseUrl("http://147.83.7.206:8080/dsaApp/")
+                //"http://147.83.7.206:8080/dsaApp/"
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

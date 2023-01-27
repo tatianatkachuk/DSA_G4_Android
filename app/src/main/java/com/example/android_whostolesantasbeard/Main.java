@@ -8,20 +8,20 @@ import android.content.SharedPreferences;
 import android.media.Image;
 import android.view.View;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.EditText;
 import android.widget.ImageView;
+=======
+>>>>>>> Store
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import android.widget.Toast;
-import android.content.CursorLoader;
-import android.content.Loader;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +31,11 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     TextView personalInfo;
+<<<<<<< HEAD
     ImageView settingsSwap;
+=======
+    Button settingsSwap;
+>>>>>>> Store
     TextView leaderBoard;
     Button closeSession;
     IWSSBService service;
@@ -65,7 +69,11 @@ public class Main extends AppCompatActivity{
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
+<<<<<<< HEAD
         settingsSwap = (ImageView) findViewById(R.id.Button_settings);
+=======
+        settingsSwap = (Button) findViewById(R.id.settingsSwap);
+>>>>>>> Store
         closeSession = (Button) findViewById(R.id.closeSession);
         nameText = (TextView) findViewById(R.id.nameText);
         coinsText = (TextView) findViewById(R.id.textCoins);
@@ -171,12 +179,12 @@ public class Main extends AppCompatActivity{
     }
 
     public void openStoreView(View view) {
-        Intent intent = new Intent(Main.this, ShopItems.class);
+        Intent intent = new Intent(this, Store.class);
         this.startActivity(intent);
     }
 
     public void openStore() {
-        Intent intent = new Intent(this, ShopItems.class);
+        Intent intent = new Intent(this, Store.class);
         this.startActivity(intent);
     }
     public void openLeaderboard(){

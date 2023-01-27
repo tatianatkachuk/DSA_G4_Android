@@ -7,7 +7,7 @@
     tools:context=".Leaderboard">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/m_recyclerView"
+        android:id="@+id/mRecyclerView"
         android:layout_width="397dp"
         android:layout_height="514dp"
         android:layout_marginStart="1dp"

@@ -45,13 +45,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity android:name=".Register" />
         <activity android:name=".Main" />
-        <activity android:name=".ShopItems" />
+        <activity android:name=".Store" />
         <activity android:name=".InfoProfile" />
         <activity android:name=".Settings" />
     </application>
