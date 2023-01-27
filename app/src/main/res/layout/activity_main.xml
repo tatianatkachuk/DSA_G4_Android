@@ -183,8 +183,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.647" />
 
-    <ImageView
-        android:id="@+id/imageView5"
+    <Button
+        android:id="@+id/settingsSwap"
         android:layout_width="41dp"
         android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"

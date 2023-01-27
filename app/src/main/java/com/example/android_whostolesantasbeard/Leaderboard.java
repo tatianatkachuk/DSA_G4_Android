@@ -20,7 +20,7 @@ public class Leaderboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.m_recyclerView);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
 
         setUpLeaderBoardEntries();
 

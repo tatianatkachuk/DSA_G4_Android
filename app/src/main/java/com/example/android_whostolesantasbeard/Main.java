@@ -25,7 +25,7 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     TextView personalInfo;
-    TextView settingsSwap;
+    Button settingsSwap;
     TextView leaderBoard;
     Button closeSession;
     IWSSBService service;
@@ -59,7 +59,7 @@ public class Main extends AppCompatActivity{
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
-        //settingsSwap = (TextView) findViewById(R.id.settingsSwap);
+        settingsSwap = (Button) findViewById(R.id.settingsSwap);
         closeSession = (Button) findViewById(R.id.closeSession);
         nameText = (TextView) findViewById(R.id.nameText);
         coinsText = (TextView) findViewById(R.id.textCoins);
@@ -165,12 +165,12 @@ public class Main extends AppCompatActivity{
     }
 
     public void openStoreView(View view) {
-        Intent intent = new Intent(Main.this, ItemsStoreRecyclerViewAdapter.class);
+        Intent intent = new Intent(this, Store.class);
         this.startActivity(intent);
     }
 
     public void openStore() {
-        Intent intent = new Intent(this, ItemsStoreRecyclerViewAdapter.class);
+        Intent intent = new Intent(this, Store.class);
         this.startActivity(intent);
     }
     public void openLeaderboard(){
