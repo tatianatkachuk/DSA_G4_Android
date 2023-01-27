@@ -11,3 +11,5 @@ Registration: Frederick Andrade
 Login: Tatiana Tkachuk
 
 Store: Omar Fallouk
+
+Query: Bernat Jara
