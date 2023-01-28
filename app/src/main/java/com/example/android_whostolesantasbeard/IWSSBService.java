@@ -22,7 +22,7 @@ public interface IWSSBService {
     @POST("user/logIn")
     Call<User> loginUser(@Body User user);
 
-    @POST("user/report")
+    @POST("technicalService/report")
     Call<Issue> reportIssue(@Body Issue issueInfo);
 
     @GET ("user/{userName}")
@@ -43,7 +43,7 @@ public interface IWSSBService {
     @GET("items/itemsList")
     Call <List<Item>> itemsList (@Body List<Item> items);
 
-    @POST("user/question")
+    @POST("technicalService/question")
     Call<Query> askQuery(@Body Query query);
 
 
