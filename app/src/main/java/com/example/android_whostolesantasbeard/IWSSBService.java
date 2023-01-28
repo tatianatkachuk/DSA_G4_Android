@@ -5,6 +5,7 @@ import com.example.android_whostolesantasbeard.entities.PasswordUpdate;
 import com.example.android_whostolesantasbeard.entities.Query;
 import com.example.android_whostolesantasbeard.entities.UserCredentials;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -40,11 +41,12 @@ public interface IWSSBService {
     @PUT("user/updateImage/{id}/{newImage}")
     Call<User> updateProfileImage(@Path("id") String userID, @Path("newImage") Integer newImage);
 
-    @GET("items/itemsList")
-    Call <List<Item>> itemsList (@Body List<Item> items);
-
     @POST("technicalService/question")
     Call<Query> askQuery(@Body Query query);
 
+    @GET("item/itemsList")
+    Call <ArrayList<Item>> getStoreItems();
 
+    @PUT("item/PurchaseItem/{ItemName}/{UserName}")
+    Call<Boolean> TryPurchase(@Path("ItemName") String itemName, @Path("UserName") String username);
 }

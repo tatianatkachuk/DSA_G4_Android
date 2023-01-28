@@ -5,8 +5,6 @@ import static android.app.PendingIntent.getActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -42,6 +39,7 @@ public class Main extends AppCompatActivity{
     TextView coinsText;
 
     String username;
+    public static String S_MyUsername;
 
     String selectedImage;
 
@@ -57,7 +55,7 @@ public class Main extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        S_MyUsername = getIntent().getStringExtra("username");
         // Loader
         progressBar = findViewById(R.id.loaderMain);
 
@@ -243,6 +241,7 @@ public class Main extends AppCompatActivity{
 
     public void openStore() {
         Intent intent = new Intent(this, Store.class);
+        intent.putExtra("myUsername", username);
         this.startActivity(intent);
     }
 

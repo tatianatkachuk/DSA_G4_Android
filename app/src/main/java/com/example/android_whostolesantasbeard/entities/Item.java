@@ -2,11 +2,19 @@ package com.example.android_whostolesantasbeard.entities;
 
 public class Item {
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
     private String name;
     private String description;
     private String price;
     private String image;
-
     public Item(String name, String description, String price, String image){
         this.name = name;
         this.description = description;
