@@ -1,9 +1,11 @@
 package com.example.android_whostolesantasbeard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,18 +55,28 @@ public class Store extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Item>>() {
             @Override
             public void onResponse(Call<ArrayList<Item>> call, Response<ArrayList<Item>> response) {
-                Log.d("STORE","Response received" + response.body());
-                if(response.code() == 200){
-
-                    itemsList = response.body();
-                    SetUpUI();
+                int responseCode = response.code();
+                switch (responseCode){
+                    case 200 : {
+                        itemsList = response.body();
+                        SetUpUI();
+                        break;
+                    }
+                    case 402 : {
+                        break;
+                    }
+                    case 409 : {
+                        break;
+                    }
                 }
+
+
+
             }
             @Override
             public void onFailure(Call<ArrayList<Item>> call, Throwable t) {
 
             }
         });
-
     }
 }

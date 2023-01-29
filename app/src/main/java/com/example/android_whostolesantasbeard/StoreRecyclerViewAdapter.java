@@ -37,7 +37,9 @@ public class StoreRecyclerViewAdapter extends RecyclerView.Adapter<StoreRecycler
         itemsToBeDisplayed = itemsList;
         service = APIClient.getClient().create(IWSSBService.class);
     }
-
+    private void showToast(String message){
+        Toast.makeText(this.context, message, Toast.LENGTH_LONG).show();
+    }
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -73,7 +75,9 @@ public class StoreRecyclerViewAdapter extends RecyclerView.Adapter<StoreRecycler
         TextView itemPrice;
         Button itemBuyAttempt;
         IWSSBService apiService;
-
+        private void showToast(String message, Context context){
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        }
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             itemImage = itemView.findViewById(R.id.item_image);
@@ -91,19 +95,18 @@ public class StoreRecyclerViewAdapter extends RecyclerView.Adapter<StoreRecycler
                             int responseCode = response.code();
                             switch (responseCode){
                                 case 200 :{
-                                    Log.d("STORE", "WE CORRECTLY BOUGHT SOMETHING");
+                                    showToast("You purchased correctly this item! Thank you!",view.getContext());
                                     break;
                                 }
                                 case 409 : {
-                                    Log.d("STORE", "WE ALREDY HAVE THIS ITEM");
+                                    showToast("You already have this item! Why would you need two of them?",view.getContext());
                                     break;
                                 }
                                 case 402 : {
-                                    Log.d("STORE", "YOU DONT HAVE ENOUGH COINS");
+                                    showToast("You don't have enough money to buy this, ask Santa for money!",view.getContext());
                                     break;
                                 }
                                 default: {
-                                    Log.d("STORE", "WHAT THE F*** JUST EVEN HAPPENED");
                                     break;
                                 }
                             }
@@ -111,7 +114,7 @@ public class StoreRecyclerViewAdapter extends RecyclerView.Adapter<StoreRecycler
 
                         @Override
                         public void onFailure(Call<Boolean> call, Throwable t) {
-
+                            Log.d("ERRRO", "This should not happen at all");
                         }
                     });
                 }

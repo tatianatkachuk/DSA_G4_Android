@@ -56,18 +56,6 @@ public class Main extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        S_MyUsername = getIntent().getStringExtra("username");
-        // Loader
-        progressBar = findViewById(R.id.loaderMain);
-
-        service = APIClient.getClient().create(IWSSBService.class);
-
-        String username = getIntent().getExtras().getString("username");
-        getUserInfo(service, username, "main");
-
-        profileImage = (ImageView) findViewById(R.id.profile_image);
-        askImg = (ImageView) findViewById(R.id.askImg);
-
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
         settingsSwap = (ImageView) findViewById(R.id.settingsSwap);
@@ -77,6 +65,23 @@ public class Main extends AppCompatActivity{
         coinsText = (TextView) findViewById(R.id.textCoins);
         leaderBoard = (TextView) findViewById(R.id.leaderboard);
         swapToInventory = (TextView) findViewById(R.id.swapToInventory);
+
+
+
+        S_MyUsername = getIntent().getStringExtra("username");
+        // Loader
+        progressBar = findViewById(R.id.loaderMain);
+
+        service = APIClient.getClient().create(IWSSBService.class);
+
+        String username = getIntent().getExtras().getString("username");
+        nameText.setText(username);
+        getUserInfo(service, username, "main");
+
+        profileImage = (ImageView) findViewById(R.id.profile_image);
+        askImg = (ImageView) findViewById(R.id.askImg);
+
+
 
 
         // Loader finish
@@ -177,7 +182,7 @@ public class Main extends AppCompatActivity{
                     String prueba = user.getId();
                     Log.d("ID user", String.valueOf(prueba));
 
-                    if(activity == "main"){setUserInMain(user);}
+                    if(activity == "main"){setUserInMain();}
                     if(activity == "info"){openProfileInfo(user);}
                     if(activity == "settings"){openSettings(user);}
 
@@ -223,9 +228,22 @@ public class Main extends AppCompatActivity{
 
     }
 
-    public void setUserInMain(User user){
-        nameText.setText(user.getUsername());
-        coinsText.setText(user.getCoins() + " coins");
+    public void setUserInMain(){
+
+        Call<User> call = service.getUserbyUserName(S_MyUsername);
+          call.enqueue(new Callback<User>() {
+           @Override
+           public void onResponse(Call<User> call, Response<User> response) {
+               User user = response.body();
+               nameText.setText(user.getUsername());
+               Log.d("TEST", "Username found : " + user.getUsername());
+               coinsText.setText(user.getCoins() + " coins");
+           }
+           @Override
+           public void onFailure(Call<User> call, Throwable t) {
+
+           }
+       });
     }
 
     ///////////////////////////////////////////
@@ -283,5 +301,11 @@ public class Main extends AppCompatActivity{
         intent.putExtra("username", user.getUsername());
         intent.putExtra("mail", user.getMail());
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getUserInfo(service, username, "main");
     }
 }
