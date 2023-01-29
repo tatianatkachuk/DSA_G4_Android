@@ -104,9 +104,7 @@ public class SignIn extends AppCompatActivity {
                     String email = user.getMail();
                     String coins = user.getCoins();
                     Integer imageID = user.getImageID();
-
-                    Log.d("User",username+" "+pass+" "+id+" " + email + " " + coins);
-
+                    Main.S_MyID = user.getId();
                     // Save to shared preferences IF the user wants to
                     if(rememberMeButton.isChecked()){
                         saveIntoShPrefs(username, pass);
@@ -176,15 +174,12 @@ public class SignIn extends AppCompatActivity {
         Intent intent = new Intent(this, Main.class);
         intent.putExtra("username", username);
         startActivity(intent);
-
     }
 
     public void openRegisterView(View view) {
         Intent intent = new Intent(SignIn.this, Register.class);
         this.startActivity(intent);
     }
-
-
     //Shared Preferences
     public void saveIntoShPrefs(String username, String password){
         SharedPreferences shPrefs;

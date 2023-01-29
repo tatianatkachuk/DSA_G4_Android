@@ -40,6 +40,7 @@ public class Main extends AppCompatActivity{
 
     String username;
     public static String S_MyUsername;
+    public static String S_MyID;
 
     String selectedImage;
 
