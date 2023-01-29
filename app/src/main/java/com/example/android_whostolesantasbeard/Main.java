@@ -28,7 +28,7 @@ public class Main extends AppCompatActivity{
 
     TextView swapToStore;
     TextView personalInfo;
-    //Button settingsSwap;
+    TextView swapToInventory;
     ImageView settingsSwap;
     TextView leaderBoard;
     Button closeSession;
@@ -69,13 +69,13 @@ public class Main extends AppCompatActivity{
 
         swapToStore = (TextView) findViewById(R.id.swapToStore);
         personalInfo = (TextView) findViewById(R.id.personalInfo);
-        //settingsSwap = (Button) findViewById(R.id.settingsSwap);
         settingsSwap = (ImageView) findViewById(R.id.settingsSwap);
         closeSession = (Button) findViewById(R.id.closeSession);
         issues = (TextView) findViewById(R.id.issues);
         nameText = (TextView) findViewById(R.id.nameText);
         coinsText = (TextView) findViewById(R.id.textCoins);
         leaderBoard = (TextView) findViewById(R.id.leaderboard);
+        swapToInventory = (TextView) findViewById(R.id.swapToInventory);
 
 
         // Loader finish
@@ -138,6 +138,13 @@ public class Main extends AppCompatActivity{
                 Intent intent = new Intent(getApplicationContext(), QueryActivity.class);
                 intent.putExtra("username", username);
                 startActivity(intent);
+            }
+        });
+
+        swapToInventory.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                openInventory(username);
             }
         });
 
@@ -235,8 +242,9 @@ public class Main extends AppCompatActivity{
         finish();
     }
 
-    public void openStoreView(View view) {
-        Intent intent = new Intent(this, Store.class);
+    public void openInventory(String usr) {
+        Intent intent = new Intent(this, Inventory.class);
+        intent.putExtra("username", usr);
         this.startActivity(intent);
     }
 

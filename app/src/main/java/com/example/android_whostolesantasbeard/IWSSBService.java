@@ -1,5 +1,6 @@
 package com.example.android_whostolesantasbeard;
 
+import com.example.android_whostolesantasbeard.entities.InventoryElement;
 import com.example.android_whostolesantasbeard.entities.Item;
 import com.example.android_whostolesantasbeard.entities.LeaderboardEntry;
 import com.example.android_whostolesantasbeard.entities.PasswordUpdate;
@@ -7,7 +8,6 @@ import com.example.android_whostolesantasbeard.entities.Query;
 import com.example.android_whostolesantasbeard.entities.UserCredentials;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -53,5 +53,8 @@ public interface IWSSBService {
 
     @GET("match/ranking")
     Call<ArrayList<LeaderboardEntry>> getLeaderBoard();
+
+    @GET("item/inventory/{UserId}")
+    Call <ArrayList<InventoryElement>> getInventory(@Path("UserId") String userId);
 
 }

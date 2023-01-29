@@ -54,5 +54,6 @@
         <activity android:name=".ReportIssue" />
         <activity android:name=".SelectImage" />
         <activity android:name=".QueryActivity"/>
+        <activity android:name=".Inventory"/>
     </application>
 </manifest>
