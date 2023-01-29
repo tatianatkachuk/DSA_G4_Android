@@ -12,18 +12,24 @@ import com.example.android_whostolesantasbeard.entities.LeaderboardEntry;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Leaderboard extends AppCompatActivity {
 
     ArrayList<LeaderboardEntry> leaderBoardEntries = new ArrayList<>();
     Button goBackButton;
+    IWSSBService service;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
-
         setUpLeaderBoardEntries();
+    }
 
+    private void fillLeaderBoard() {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
         LeaderboardRecyclerViewAdapter adapter = new LeaderboardRecyclerViewAdapter(leaderBoardEntries,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -34,21 +40,27 @@ public class Leaderboard extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
+
     // Must be replaced by api petitions later on
     private void setUpLeaderBoardEntries()
     {
-        LeaderboardEntry a = new LeaderboardEntry("Fred",111);
-        LeaderboardEntry b = new LeaderboardEntry("Adam",666);
-        LeaderboardEntry c = new LeaderboardEntry("Omar",333);
-        LeaderboardEntry d = new LeaderboardEntry("Tatiana",444);
-        LeaderboardEntry e = new LeaderboardEntry("Bernat",555);
-        leaderBoardEntries.add(a);
-        leaderBoardEntries.add(b);
-        leaderBoardEntries.add(c);
-        leaderBoardEntries.add(d);
-        leaderBoardEntries.add(e);
+        service = APIClient.getClient().create(IWSSBService.class);
+        Call<ArrayList<LeaderboardEntry>> call = service.getLeaderBoard();
+        call.enqueue(new Callback<ArrayList<LeaderboardEntry>>() {
+            @Override
+            public void onResponse(Call<ArrayList<LeaderboardEntry>> call, Response<ArrayList<LeaderboardEntry>> response) {
+                if(response.code() == 200){
+                    leaderBoardEntries = response.body();
+                    fillLeaderBoard();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<LeaderboardEntry>> call, Throwable t) {
+
+            }
+        });
+
     }
 }

@@ -2,11 +2,11 @@ package com.example.android_whostolesantasbeard.entities;
 
 public class LeaderboardEntry {
     String username;
-    int maxScore;
+    int maxPoints;
 
     public LeaderboardEntry(String username, int maxScore) {
         this.username = username;
-        this.maxScore = maxScore;
+        this.maxPoints = maxScore;
     }
 
     public String getUsername() {
@@ -14,6 +14,6 @@ public class LeaderboardEntry {
     }
 
     public int getMaxScore() {
-        return maxScore;
+        return maxPoints;
     }
 }

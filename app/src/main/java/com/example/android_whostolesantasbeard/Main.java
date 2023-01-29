@@ -176,7 +176,8 @@ public class Main extends AppCompatActivity{
                     Integer imageID = user.getImageID();
 
                     Log.d("IMAGE", String.valueOf(imageID));
-
+                    if(imageID == null)
+                        return;
                     if(imageID.intValue() == 1){
                         profileImage.setImageResource(R.drawable.avatar1);
                         return;}

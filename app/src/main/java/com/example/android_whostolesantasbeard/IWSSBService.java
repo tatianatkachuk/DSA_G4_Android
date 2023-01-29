@@ -1,6 +1,7 @@
 package com.example.android_whostolesantasbeard;
 
 import com.example.android_whostolesantasbeard.entities.Item;
+import com.example.android_whostolesantasbeard.entities.LeaderboardEntry;
 import com.example.android_whostolesantasbeard.entities.PasswordUpdate;
 import com.example.android_whostolesantasbeard.entities.Query;
 import com.example.android_whostolesantasbeard.entities.UserCredentials;
@@ -49,4 +50,8 @@ public interface IWSSBService {
 
     @PUT("item/PurchaseItem/{ItemName}/{UserName}")
     Call<Boolean> TryPurchase(@Path("ItemName") String itemName, @Path("UserName") String username);
+
+    @GET("match/ranking")
+    Call<ArrayList<LeaderboardEntry>> getLeaderBoard();
+
 }
